@@ -481,4 +481,41 @@ class Main{
 
 Pattern 21 : 
 
+_**_
+*__*
+_**_
+*__*
+
+public class PatternPrinter {
+    public static void main(String[] args) {
+        // Define the number of rows and columns for the pattern
+        int rows = 4;
+        int columns = 4;
+        
+        // Loop through each row
+        for (int i = 0; i < rows; i++) {
+            // Loop through each column
+            for (int j = 0; j < columns; j++) {
+                // Check if the current row is even or odd
+                if (i % 2 == 0) {
+                    // If the row is even, print _ for the first and last characters, and * for the middle characters
+                    if (j == 0 || j == columns - 1) {
+                        System.out.print('_');
+                    } else {
+                        System.out.print('*');
+                    }
+                } else {
+                    // If the row is odd, print * for the first and last characters, and _ for the middle characters
+                    if (j == 0 || j == columns - 1) {
+                        System.out.print('*');
+                    } else {
+                        System.out.print('_');
+                    }
+                }
+            }
+            // Move to the next line after finishing a row
+            System.out.println();
+        }
+    }
+}
 
