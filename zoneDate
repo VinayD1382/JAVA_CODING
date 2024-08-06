@@ -1,0 +1,11 @@
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+class Main{
+    public static void main(String[] args){
+        ZoneId obj = ZoneId.of("Asia/Kolkata");
+        ZonedDateTime obj1 = ZonedDateTime.now(obj);
+        DateTimeFormatter res = DateTimeFormatter.ofPattern("HH:mm:SS  dd:MM:YYYY z");
+        System.out.println(res.format(obj1));
+    }
+}
