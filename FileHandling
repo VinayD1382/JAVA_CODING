@@ -1,3 +1,12 @@
+Create a file
+Read file
+Write file
+copying a file data
+rename file 
+delete a file.
+
+
+
 package FileHandling;
 import java.io.File;
 import java.io.IOException;
@@ -83,7 +92,26 @@ public class create1 {
         		}else {
         			System.out.println("Folder Already exsists");
         		}
-     
-     
-    }
+        		
+        		try {
+        			File f8 = new File("C:\\Users\\LAVANYA\\Desktop\\FileFolder\\one1.txt");
+        			
+        			if(f8.createNewFile()) {
+        				System.out.println("Succesfuly created file one1");
+        			}else {
+        				System.out.println("Already Exsists");
+        			}
+        		}catch(IOException e) {
+        			System.out.println(e);
+        		}
+        		
+        		
+        			File f9 = new File("C:\\Users\\LAVANYA\\Desktop\\FileFolder\\one1.txt");
+        			if(f9.exists()) {
+        				f9.delete(); //delete a file.
+        				System.out.println(f9.delete());
+        			}else {
+        				System.out.println("No such folder");
+        			}
+}
 }
