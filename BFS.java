@@ -43,7 +43,7 @@ static class Graphimp {
 		   obj.offer(val);
 		   
 		   while(!obj.isEmpty()) {
-			   int cur = obj.poll();
+			   int cur = obj.poll(); //poll head of queue
 			   System.out.print(vertexData[cur] + " ");
 			   
 			   for(int i=0;i<size;i++) {
