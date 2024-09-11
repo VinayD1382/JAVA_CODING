@@ -1,0 +1,33 @@
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        this.next = next;
+    }
+    
+    public static void main(String[] args){
+        Node tn = new Node(3);
+        Node fn = new Node(1);
+        Node sn = new Node(2);
+       
+        tn.next = fn;
+        fn.next = sn;
+        Node cur = tn;
+        while(cur!=null){
+            System.out.println(cur.data + " ");
+            cur = cur.next;
+        }
+        System.out.println("The lowest value of the array : " + findminvalue(fn));
+        
+    }
+    public static int findminvalue(Node head){
+    int min = head.data;
+    Node cur = head.next;
+    while(cur.data<min){
+        min = cur.data;
+        cur = cur.next;
+    }
+    return min;
+    }
+}
