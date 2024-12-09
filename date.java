@@ -9,3 +9,15 @@ public class date {
 	}
 
 }
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+class Main{
+    public static void main(String[] args){
+        Date obj = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
+        System.out.print(sdf.format(obj));
+    }
+}
