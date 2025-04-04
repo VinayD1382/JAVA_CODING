@@ -24,5 +24,5 @@ public class primeornot {
 	}
 
 }
-// so prvate variable if we use obj.name = "Vinay" its n error
+// so prvate variable if we use obj.name = "Vinay" its n error , so use obj.setname("vinay")
 //so private variable that can be access only wth getter and setter can we change the value 
