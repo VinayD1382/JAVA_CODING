@@ -1,0 +1,92 @@
+Routing : 
+Routing in Angular is used to view different component pages without refreshing the pages
+
+
+Create a new Project : ng new routing-demo
+
+cd routing-demo
+
+run the server : ng serve -o
+
+
+spec.ts : test cases to verify the component works are not.
+
+app.routes.ts
+
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+//path is empty direct to home and once again confirm that pathmatchs full empty only  
+  { path: '**', redirectTo: 'home' } 
+if /any values /abc, /ann direct to home
+
+contact.ts : 
+import { Component } from '@angular/core';
+
+@Component({
+  selector: '',  //if <app-contact> used in html
+  imports: [],
+  templateUrl: './contact.html',
+  styleUrl: './contact.scss'
+})
+export class ContactComponent {
+
+}
+
+standalone : before v14 all thing need to add in NgModule but insted now we can make standalone : true.
+
+step :
+1)index.html
+2)main.ts : 
+  /*It says bootstrap to use app as component and with configuration as app.config */
+3)app.ts : it will find the app-root in index.html
+4)app.config : to activate the router 
+5) routers called here
+
+
+DI : 
+CartPage
+@Component({...})
+export class CartPage {
+  items: string[] = [];
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    this.items = this.cartService.getItems();
+  }
+}
+
+
+👉 Now the same CartService instance is shared across Kids, Toys, and CartPage.
+
+Add from Kids → goes into same cart.
+
+Add from Toys → also goes into same cart.
+
+CartPage shows both items.
+
+Case 2: Using new CartService() (❌ Wrong way)
+export class KidsComponent {
+  cartService = new CartService(); // New instance here
+  ...
+}
+
+export class ToysComponent {
+  cartService = new CartService(); // Another new instance
+  ...
+}
+
+export class CartPage {
+  cartService = new CartService(); // Another new instance
+  ...
+}
+
+
+👉 Each component has its own cart.
+
+Add from Kids → stored in KidsComponent’s cart only.
+
+Add from Toys → stored in ToysComponent’s cart only.
+
+CartPage → empty, because it uses a different cart.
+
+⚡️Result: Your cart page never shows all items together → broken shopping cart.
