@@ -132,3 +132,7 @@ export class ContactComponent {
   }
 }
 
+<!-- in plain text we need this :  DOM selectors : 
+ document.querySelector('.success').style.display = "block";
+But in ts to show/hide handle by ngif directive,
+formGroup,formControlName, no need tDOMo say to -->
