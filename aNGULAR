@@ -1,6 +1,6 @@
 Routing : 
 Routing in Angular is used to view different component pages without refreshing the pages
-
+Sassy css
 
 Create a new Project : ng new routing-demo
 
@@ -90,3 +90,45 @@ Add from Toys → stored in ToysComponent’s cart only.
 CartPage → empty, because it uses a different cart.
 
 ⚡️Result: Your cart page never shows all items together → broken shopping cart.
+
+
+
+import { Component, signal } from '@angular/core';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { NgIf, CommonModule } from '@angular/common';
+import { ContactService } from './contact.service';
+
+@Component({
+  selector: 'app-contact',
+  standalone: true,
+  imports: [
+    CommonModule,      
+    ReactiveFormsModule 
+  ],
+  templateUrl: './contact.html',
+  styleUrls: ['./contact.scss']
+})
+export class ContactComponent {
+  message = '';
+ messageSignal = signal('');
+ /*wont check entire component instaed only <p> */
+  contactForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl('')
+  });
+
+  constructor(private contactService: ContactService) {}
+  /*This is Dependency Injection : so instead of creating (new contactservice) manually 
+  it will created by angular, so used in 30 line 
+  Every time you call new, you get a separate instance.Angular has no control over this instance.
+  like toys,kids section adding cart uses single cartpage here use sngle DI*/
+
+  onSubmit() {
+    const { name, email } = this.contactForm.value;
+    this.message = this.contactService.sendMessage(name!, email!);
+/*This will check all component line and provide output */
+    this.messageSignal.set(this.contactService.sendMessage(name!, email!));
+  /*But this with signal only check sendmessage() <p> */
+  }
+}
+
